@@ -1,0 +1,58 @@
+{% extends 'adminTemplates/base.html' %}
+
+{% block title %} Customer Order {% endblock %}
+{% block css %} 
+a.list-group-item:hover{  
+	background-color:grey;
+}
+{% endblock %}
+{% block body %}
+<div class="container-fluid min-vh-100 my-3" style="font-family: 'Lato', sans-serif;">
+    <h3 class="text-center font-weight-bold text-muted">Order List</h3><hr>
+    {% comment %} <a href="/add-product/"><button class="x btn btn-dark"><i class="fa fa-plus"></i><label class="mx-2">Add New Product</label></button></a><hr> {% endcomment %}
+	
+        
+        <table class="table table-active table-hover">
+             <thead>
+                <tr>
+                    <th class="col">Order Id</th>
+                    <th class="col">Items</th>
+                    <th class="col">Amount</th>
+                    <th class="col">Name</th>
+                    <th class="col">Email</th>
+                    <th class="col">Address</th>
+                    <th class="col">City</th>
+                    <th class="col">State</th>
+                    <th class="col">Zip code</th>
+                    <th class="col">Phone Number</th>
+                    <th class="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in order %}
+                
+                <tr>
+                    <th class="text-danger">{{ i.order_id }}</th>
+                    <td>{{ i.items_json }}</td>
+                    <td>Rs.{{ i.amount }}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.state}}</td>
+                    <td>{{i.zip_code}}</td>
+                    <td>{{i.phone}}</td>
+                    <td><a href="{% url 'delete_order' i.order_id %}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td><a>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+</div>
+{% endblock %}
+
+{%block js%} 
+
+{% endblock %}

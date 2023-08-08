@@ -1,0 +1,48 @@
+{% extends 'adminTemplates/base.html' %}
+
+{% block title %} Contact Details {% endblock %}
+{% block css %} 
+a.list-group-item:hover{  
+	background-color:grey;
+}
+{% endblock %}
+{% block body %}
+<div class="container-fluid min-vh-100 my-3" style="font-family: 'Lato', sans-serif;">
+    <h3 class="text-center font-weight-bold text-muted">Contact List</h3><hr>
+    {% comment %} <a href="/add-product/"><button class="x btn btn-dark"><i class="fa fa-plus"></i><label class="mx-2">Add New Product</label></button></a><hr> {% endcomment %}
+	
+        
+        <table class="table table-active table-hover">
+             <thead>
+                <tr>
+                   
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Description</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in contact %}
+                
+                <tr>
+                    
+                    <td>{{ i.name }}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.desc}}</td>
+                   
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+</div>
+{% endblock %}
+
+{%block js%} 
+
+{% endblock %}

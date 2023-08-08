@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} SignIn  {% endblock %}
+
+
+{% block css %}
+	img{
+		max-width:450px;
+		height:auto;
+	}
+	.nav-link:hover{
+          
+		background-color:grey;
+		border-radius:5px;
+		
+	  }
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 my-5">
+				<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg">
+			</div>
+
+			<div class="col-md-6 my-4">
+				<div>
+					{% for message in messages %}
+					  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>{{message}}</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  
+					{% endfor %}
+				  </div>
+				<form method="POST" name="signin">{% csrf_token %}
+					<div class="form-group">
+				      <i class="fa fa-user mx-2"></i><label>Username</label>
+				      <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Username">
+				    </div>
+
+					 
+				    <div class="form-group">
+				      <i class="fa fa-envelope mx-2"></i><label>Email</label>
+				      <input type="email" class="form-control" id="email" name="email" autocomplete="off" placeholder="Email">
+				    </div>
+				    <div class="form-group">
+				      <i class="fa fa-lock mx-2"></i><label>Password</label>
+				      <input type="password" class="form-control" id="password" name="password" autocomplete="off" placeholder="Password">
+				    </div>
+					 
+			
+					<div class="form-group">
+
+				      <i class="fa fa-lock mx-2"></i><label>Confirm Password</label>
+				      <input type="password" class="form-control" id="con_password" name="con_password" autocomplete="off" placeholder="Confirm Password">
+				    </div>
+				    <div class="text-center">
+					  <button type="submit" class="btn btn-dark form-control">Sign in</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+<script>
+if(localStorage.getItem('cart') == null){
+    var cart = {};
+  }
+  else
+  {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+  } 
+</script>
+{% endblock %}

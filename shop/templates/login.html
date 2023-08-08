@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+
+{% block css %}
+	img{
+		max-width:450px;
+		height:auto;
+	}
+	.nav-link:hover{
+          
+		background-color:grey;
+		border-radius:5px;
+		
+	  }
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 my-5">
+				<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg">
+			</div>
+
+			<div class="col-md-6 my-5">
+				{% for message in messages %}
+    
+				<div class="alert alert-danger">
+					<a class="close" href="#" data-dismiss="alert"></a>
+					   <b>{{ message }}</b>
+				</div>
+			
+				{% endfor %}
+				<form method="POST">{% csrf_token %}
+					<div class="form-group my-4">
+				      <i class="fa fa-user mx-2"></i><label>Username</label>
+				      <input type="text" class="form-control" id="name" name="username" autocomplete="off" placeholder="Username" required>
+				    </div>
+				    <div class="form-group">
+				      <i class="fa fa-lock mx-2"></i><label>Password</label>
+				      <input type="password" class="form-control" id="password" name="pass" autocomplete="off" placeholder="Password" required>
+				    </div>
+				    <div class="text-center">
+					  <button type="submit" class="btn btn-dark form-control">Login</button>
+					</div>
+					<label class="my-3">Don't have an account ? <a href="{% url 'signIn' %}">Create Account</a></label>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+<script>
+if(localStorage.getItem('cart') == null){
+    var cart = {};
+  }
+  else
+  {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+  } 
+</script>
+{% endblock %}

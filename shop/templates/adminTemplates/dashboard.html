@@ -1,0 +1,82 @@
+{% extends 'adminTemplates/base.html' %}
+
+{%block title%} {% endblock %}
+{%block css%} 
+a.list-group-item:hover{  
+	background-color:grey;
+}
+
+{% endblock %}
+{%block body %} 
+
+<div class="container-fluid bg-light min-vh-100" style="font-family: 'Lato', sans-serif;">
+    <div class="row mt-2">
+    	<div class="col-md-4">
+			<div class="bg-danger text-center card  mb-2" style="width: 18rem;" >
+			  <div class="card-body">
+			    <h5 class="card-title text-light">Category</h5>
+			  
+			    <a href="{% url 'category' %}" class="btn btn-outline-light">Go to Category List</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="bg-dark text-center card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title text-light">Product</h5>
+			  
+			    <a href="{% url 'productList' %}" class="btn btn-outline-light">Go to Product List</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="bg-success text-center card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title text-light">Order Details</h5>
+			    <a href="{% url 'orders' %}" class="btn btn-outline-light">Go to Order Details</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-4">
+			<div class="bg-primary text-center card" style="width: 18rem;">
+			  <div class="card-body text-light">
+			    <h5 class="card-title">Contact</h5>
+			  
+			    <a href="{% url 'contactList' %}" class="btn btn-outline-light">Go to Contact Details</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<h3 class="text-center mt-3 font-weight-bold text-muted">Register User</h3><hr>
+        <table class="table table-active table-hover">
+             <thead>
+                <tr>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in register_user %}
+                
+                <tr>
+                    <th scope="row" class="text-danger">{{ i.user_id }}</th>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.email }}</td>
+                    
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        
+</div>
+
+{% endblock %}
+
+{%block js %} 
+
+{% endblock %}

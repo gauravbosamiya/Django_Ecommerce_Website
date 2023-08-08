@@ -1,0 +1,53 @@
+{% extends 'adminTemplates/base.html' %}
+
+{% block title %}Admin - Update Product {% endblock %}
+{% block css%} 
+a.list-group-item:hover{  
+	background-color:grey;
+}
+img{
+    height:119px;
+    width:100px;
+}
+{% endblock %}
+{% block body %}
+<div class="container my-3" style="font-family: 'Lato', sans-serif;">
+    <div class="card shadow-lg mx-auto bg-light" style="width: 35rem;">	  
+		<div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <h3 class="text-center font-weight-bold">Update Product</h3><hr>
+                <div class="form-group">
+                    <label><b>Product Name</b></label>
+                    <input type="text" class="form-control" name="nm" value="{{obj.name}}" placeholder="product_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><b>Price</b></label>
+                    <input type="text" class="form-control" name="pr" value="{{obj.price}}" placeholder="price" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Description</b></label>
+                    <input type="text" class="form-control" name="desc" value="{{obj.desc}}" placeholder="desc" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Pub_Date</b></label>
+                    <input type="date" class="form-control" name="date" value="{{obj.pub_date}}" placeholder="date" required>
+                </div>
+                <div class="form-group">
+                <div><b>Product Image</b></div>
+                    <img src='/image/{{obj.image}}'>
+                    <input type="file" name="img" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-dark">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

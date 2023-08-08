@@ -1,0 +1,59 @@
+{% extends 'adminTemplates/base.html' %}
+
+{%block title%}Admin - Home{% endblock %}
+{%block css%} 
+
+    .img{
+        height: 97px;
+        width: 86px;
+    }
+   
+    a.list-group-item:hover{  
+        background-color:grey;
+    }
+      
+{% endblock %}
+{% block body %}
+<div class="container-fluid my-3" style="font-family: 'Lato', sans-serif;">
+    <h3 class="text-center font-weight-bold text-muted">Product List</h3><hr>
+    <a href="{% url 'add_product'  %}"><button class="x btn btn-dark"><i class="fa fa-plus"></i><label class="mx-2">Add New Product</label></button></a><hr>
+	
+        
+        <table class="table table-active table-responsive-sm table-hover">
+             <thead>
+                <tr>
+                    <th scope="col">ProductId</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    {% comment %} <th scope="col">Description</th> {% endcomment %}
+                    <th scope="col">Images</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_list %}
+                
+                <tr>
+                    <th scope="row" class="text-danger">{{ product.id }}</th>
+                    <th>{{ product.name }}</th>
+                    <td>{{ product.category }}</td>
+                    <td>Rs.{{ product.price }}</td>
+                    {% comment %} <td>{{ product.desc | slice:"0:100"}}...</td> {% endcomment %}
+                    <td><image src='/image/{{product.image}}' class="img"></image></td>
+                    <td><a href="{% url 'update_product' product.id %}"><button class="btn btn-primary"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a href="{% url 'delete_product' product.id %}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td><a>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+</div>
+{% endblock %}
+
+{%block js%} 
+
+{% endblock %}
